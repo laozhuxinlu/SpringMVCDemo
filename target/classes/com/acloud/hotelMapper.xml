@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhyzComm.dao.HotelMapper" > 
+
+	<sql id="Base_Column_Hotel">
+		ID,HOTELNAME,HOTELBURNAME,HOTELENNAME,HOTELINTRODUCTION,HOTELBURINTRODUCTION,HOTELENINTRODUCTION,
+		HOTELAREA,HOTELADDRESS,HOTELBURADDRESS,HOTELENADDRESS,HOTELMOBILE,HOTELINTRODUCE,HOTELBURINTRODUCE,
+		HOTELENINTRODUCE,HOTELSCORE,HOTELSTAR,HOTELSTATE,CREATEDATE,UPDATEDATE
+	</sql>
+	
+	<sql id="Base_cloumn_hotelservice_property">
+		ID,HOTELID,PROPERTYID,ISFLAG,CREATEDATE,UPDATEDATE
+	</sql>
+	
+	<sql id="Base_Column_RoomType">
+		ID,HOTELID,ROOMTYPENAME,ROOMTYPEBURNAME,ROOMTYPEENNAME,ZNPRICE,MYAPRICE,
+		ENPRICE,ROOMNUMBER,LIVINGNUMBER,ISADDBED,MOSTNUMBER,CREATEDATE,UPDATEDATE
+	</sql>
+	
+	<sql id="Base_Column_RoomInformation">
+		ID,ROOMNUMBER,ROOMTYPEID,ISFALG,ISENABLE,CHECKINTIME,CHECKOUTTIME,
+		ORDERSTARTTIME,ORDERENDTIME,CREATETIME,UPDATETIME
+	</sql>
+	
+	<!-- 获取全部酒店 -->
+	<select id="getAllHotel"  resultType="hotelDTO" parameterType="map">
+			SELECT 
+			<include refid="Base_Column_Hotel"/>
+			 FROM base_hotel WHERE 1=1
+			 ORDER BY id
+			 <if test="map.isFalg==true">
+			 	LIMIT #{map.firstResult}, #{map.maxResults}
+			 </if>
+			 
+	</select>
+
+		<!-- 添加酒店 -->
+	<insert id="addHotel" parameterType="hotelDTO">
+		insert into base_hotel(<include refid="Base_Column_Hotel"/>) values(#{id},#{hotelName},#{hotelBurName},#{hotelEnName},
+		#{hotelIntroduction},#{hotelBurIntroduction},#{hotelEnIntroduction},#{hotelArea},#{hotelAddress},#{hotelBurAddress},
+		#{hotelEnAddress},#{hotelMobile},#{hotelIntroduce},#{hotelBurIntroduce},#{hotelEnIntroduce},#{hotelScore},
+		#{hotelStar},#{hotelState},#{createDate},#{updateDate})
+	</insert>
+
+
+	<!-- 添加酒店属性 -->
+	<insert id="addHotelServiceProperty" parameterType="servicePropertyDTO">
+		<selectKey resultType="String" order="BEFORE" keyProperty="id">
+			SELECT replace(uuid(),'-','') 
+		</selectKey>
+		INSERT INTO hotelservice_property
+		(<include refid="Base_cloumn_hotelservice_property"/>) VALUES(#{id},#{hotelId}
+		,#{propertyId},#{isFlag},#{createDate},#{updateDate})
+	</insert>
+	
+	<!-- 获取选中酒店的房型 -->
+	<select id="getRoomTypeByHotel" resultType="roomTypeDTO" parameterType="map">
+		SELECT 
+			<include refid="Base_Column_RoomType"/>
+			 FROM room_type WHERE 1=1 and hotelId=#{map.hotelId}
+			 ORDER BY id
+			 <if test="map.isFalg==true">
+			 	LIMIT #{map.firstResult}, #{map.maxResults}
+			 </if>
+	</select>
+
+	<!-- 获取某个房型的信息 -->
+	<select id="getRoomTypeById" resultType="roomTypeDTO" parameterType="String">
+		SELECT * FROM room_type WHERE id=#{id}
+	</select>	
+	
+	
+	<!-- 添加酒店的房间类型 -->
+	<insert id="addRoomType" parameterType="roomTypeDTO">
+		INSERT INTO room_type(<include refid="Base_Column_RoomType"/>) VALUES(#{id},#{hotelId},#{roomTypeName},
+		#{roomTypeBurName},#{roomTypeEnName},#{znPrice},#{myaPrice},#{enPrice},#{roomNumber},#{livingNumber},
+		#{isAddBed},#{mostNumber},#{createDate},#{updateDate})
+	</insert>
+	
+	<!-- 获取选种房型的房间信息 -->
+	<select id="getRoomByRoomTypeId" parameterType="map" resultType="roomInformationDTO">
+		SELECT 
+			<include refid="Base_Column_RoomInformation"/>
+			 FROM room_information WHERE 1=1 and roomTypeId=#{map.roomTypeId}
+			 ORDER BY id
+			 <if test="map.isFalg==true">
+			 	LIMIT #{map.firstResult}, #{map.maxResults}
+			 </if>
+	 </select>
+	
+	<!-- 添加制定房间类型的房间信息 -->
+	<insert id="addRoom" parameterType="roomInformationDTO">
+		INSERT INTO room_information(<include refid="Base_Column_RoomInformation"/>)
+		VALUES(#{id},#{roomNumber},#{roomTypeId},#{isFalg},#{isEnable},#{checkInTime},#{checkOutTime},
+		#{orderStartTime},#{orderEndTime},#{createTime},#{updateTime})
+	</insert>
+	
+</mapper>   

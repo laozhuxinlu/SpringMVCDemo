@@ -1,0 +1,62 @@
+HTML {
+	
+}
+
+
+
+
+BODY {
+	LINE-HEIGHT: 18px; BACKGROUND-COLOR: #e8ecef; MARGIN: 0px; FONT-FAMILY: Tahoma; COLOR: #808080; FONT-SIZE: 12px
+}
+
+.header {
+	PADDING-BOTTOM: 10px; MARGIN: auto; PADDING-LEFT: 10px; WIDTH: 960px; PADDING-TOP: 10px
+}
+.logo {
+	PADDING-BOTTOM: 10px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 158px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+
+.banner {
+	POSITION: relative; MARGIN: 0px auto; PADDING-LEFT: 9px; WIDTH: 960px; BACKGROUND: url(banner_bg.png) no-repeat center 50%; PADDING-TOP: 8px
+}
+.center {
+	MARGIN: auto; WIDTH: 965px; BACKGROUND: url(center_bg.png) repeat-y; HEIGHT: auto; PADDING-TOP: 1px
+}
+
+.centerbottom {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.bottom {
+	MARGIN: 15px auto; WIDTH: 960px; HEIGHT: 50px
+}
+
+.centerbottombg {
+	MARGIN: auto; WIDTH: 965px
+}
+.b3 {
+	WIDTH: 100%; BACKGROUND: url(https://image.alisoft.com/fi/image/portal/bg1.jpg) repeat-x
+}
+.t3 {
+	COLOR: #3f3b36; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.layout {
+	MARGIN: auto; WIDTH: 968px
+}
+
+
+
+#login {
+	POSITION: absolute; TOP: 12px; LEFT: 710px
+}
+
+#loginbox {
+	POSITION: absolute; WIDTH: 271px; COLOR: #000000; TOP: 0px
+}
+.title1 {
+	MARGIN: 25px 0px 10px 10px; WIDTH: 218px
+}
+
+
+.layoutbgbottom {
+	MARGIN: auto; WIDTH: 943px
+}

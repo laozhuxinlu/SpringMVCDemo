@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: "Zawgyi-One";
+    font-style: normal;
+    font-weight: normal;
+	src: url('../fonts/Zawgyi-One.eot'),
+		 url('../fonts/Zawgyi-One.eot?#iefix') format('embedded-opentype'),
+		 local('Zawgyi-One'),
+		 url('../fonts/Zawgyi-One.otf') format('opentype'),
+         url('../fonts/Zawgyi-One.woff') format('woff'),
+         url('../fonts/Zawgyi-One.ttf') format('truetype'),		
+         url('../fonts/Zawgyi-One.svg#Zawgyi-One') format('svg'); 
+}
+body,input,select,textarea,div {
+    font-family: Zawgyi-One;
+}

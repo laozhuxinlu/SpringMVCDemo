@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: "Myanmar3";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/myanmar3.ttf") format("truetype");
+}
+body,input,select,textarea,div {
+    font-family: Myanmar3;
+}
