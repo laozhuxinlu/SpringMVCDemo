@@ -1,0 +1,23 @@
+This is for test project for springMVC project study
+
+环境配置：
+
+1.安装eclipse (eclipse java EE web)
+
+2.安装java环境 (并且要设置好环境变量)
+
+3.安装maven到电脑环境： 下载：http://maven.apache.org/download.cgi
+解压到电脑某路径下，然后将bin文件设置成环境变量。 　　　　参考：（http://blog.csdn.net/byhook/article/details/51407583）
+
+4.导入springMVC项目：
+　　 
+
+5. eclipse安装Maven插件： 　　　1. Help --> Eclipse Marketplace --> Search输入 maven 进行搜索 　　　2. 找到 Maven Interation for Eclipse, 下载
+
+
+6. 更新：
+选中springMVC--> project --> clean
+选中springMVC--> 右击 --> Maven --> Update project
+备注：如果第五步没有右击Maven选项： 选中springMVC --> 右击 --> Configure --> Convert to Maven Project
+
+7.运行： 在windows --> show view下找到server，显示出来 然后create 一个server去运行该项目，可选择 apache 7.0 ...
